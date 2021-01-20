@@ -9,8 +9,21 @@ public class PlayerController : MonoBehaviour
     float x;
     float z;
     private Vector3 moving;
+    Rigidbody rigid;
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
+
+    }
 
     void Update()
+    {
+        Move();
+        Rotate();
+        Jump();
+    }
+    void Move()
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
@@ -18,15 +31,15 @@ public class PlayerController : MonoBehaviour
         transform.position += moving * playerSpeed * Time.deltaTime;
     }
 
-    private void Jump()
+    void Jump()
     {
-        //if (Input.GetKey = "SpaceBar")
-        //{
-        //return;
-        //}
+        if (Input.GetButtonDown("Jump"))//스페이스바
+        {
+            rigid.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
+        }
     }
-    private void Rotate()
-    {
+    void Rotate()
+    {   
         float rotateSpeed = 300f;
         //마우스 입력받기
         float mouseX = Input.GetAxis("Mouse X");

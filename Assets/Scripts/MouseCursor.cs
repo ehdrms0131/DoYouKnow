@@ -14,7 +14,7 @@ public class MouseCursor : MonoBehaviour
     }
     void Start()    
     {
-        Lock();       
+        Lock();
     }
     private void Lock()
     {
