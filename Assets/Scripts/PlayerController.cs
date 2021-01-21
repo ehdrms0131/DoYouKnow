@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-
     }
 
     void Update()
@@ -45,7 +44,6 @@ public class PlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         //회전 방향 결정
         Vector3 dir = new Vector3(0, -mouseX, 0);
-
         //r=ro+vt
         transform.eulerAngles += dir * rotateSpeed * Time.deltaTime;
     }
