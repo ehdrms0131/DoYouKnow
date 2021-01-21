@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour
     }
     private void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x, target.position.y, target.position.z);
+        Follow();
     }
     void CameraRotate()
     {
@@ -35,5 +35,9 @@ public class CameraMove : MonoBehaviour
 
         //rotate.x = Mathf.Clamp(rotate.x, -90.0f, 90.0f);//각도를 제한
         return;
+    }
+    void Follow()
+    {
+        transform.position = new Vector3(target.position.x, target.position.y, target.position.z);
     }
 }
