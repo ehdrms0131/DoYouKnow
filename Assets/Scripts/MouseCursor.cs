@@ -24,6 +24,7 @@ public class MouseCursor : MonoBehaviour
         {
             Vector3 mouseDir = new Vector3(hitresult.point.x, transform.position.y, hitresult.point.z) - transform.position;
             animator.transform.forward = mouseDir;
+            return;
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
