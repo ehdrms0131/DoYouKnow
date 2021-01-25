@@ -9,8 +9,8 @@ public class CameraMove : MonoBehaviour
     public Camera camera;
 
     [SerializeField]
-    private float lookSensitivity;
-    private float cameraRotatelimit = 0; //최대 카메라 각도
+    private float lookSensitivity = 1;
+    private float cameraRotatelimit = 45; //최대 카메라 각도
     private float currentCameraRotation; //현재 카메라 각도
 
 
@@ -30,15 +30,19 @@ public class CameraMove : MonoBehaviour
 
         //마우스 입력받기
         float mouseX = Input.GetAxis("Mouse X");
+
         float mouseY = Input.GetAxis("Mouse Y");
-        //  `float cameraRotate = mouseY * lookSensitivity;  
+        float cameraRotate = mouseY * lookSensitivity;  
         //회전 방향/각도 결정
-        mouseX += Time.deltaTime * 10;
-        mouseY += Time.deltaTime * 10; //0.016
-        //my = Mathf.Clamp(my, -rotatelimit, rotatelimit);
-            
+
+        //mouseX += Time.deltaTime * 10;
+        //mouseY += Time.deltaTime * 10; //0.016
+
+        currentCameraRotation -= cameraRotate;
+        currentCameraRotation = Mathf.Clamp(currentCameraRotation, -cameraRotatelimit, cameraRotatelimit); 
+
         // 쿼터니언 오일러 사용 방법  
-        transform.rotation = Quaternion.Euler(mouseX, mouseY, 0.0f);
+        camera.transform.rotation = Quaternion.Euler(currentCameraRotation, 0f, 0f);
         //z값 고정 Quaternion xyz w
         //euler값을 쓰는 이유: Gimbal Lock (z축의 변환,고정)
 
