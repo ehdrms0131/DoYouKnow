@@ -6,13 +6,13 @@ public class CameraMove : MonoBehaviour
 {
 
     public Transform target;
+
     public Camera camera;
 
     [SerializeField]
     private float lookSensitivity = 1;
     private float cameraRotatelimit = 45; //최대 카메라 각도
-    private float currentCameraRotation; //현재 카메라 각도
-
+    private float currentCameraRotation = 0; //현재 카메라 각도
 
 
     private void Start()
@@ -32,14 +32,15 @@ public class CameraMove : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
 
         float mouseY = Input.GetAxis("Mouse Y");
-        float cameraRotate = mouseY * lookSensitivity;  
-        //회전 방향/각도 결정
 
+        float cameraRotate = mouseY * lookSensitivity;
+        //회전 방향/각도 결정
         //mouseX += Time.deltaTime * 10;
         //mouseY += Time.deltaTime * 10; //0.016
 
         currentCameraRotation -= cameraRotate;
         currentCameraRotation = Mathf.Clamp(currentCameraRotation, -cameraRotatelimit, cameraRotatelimit); 
+
 
         // 쿼터니언 오일러 사용 방법  
         camera.transform.rotation = Quaternion.Euler(currentCameraRotation, 0f, 0f);
