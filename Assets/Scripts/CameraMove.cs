@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+
     public Transform target;
-    
+    public Camera camera;
+
+    [SerializeField]
+    private float lookSensitivity;
+    private float cameraRotatelimit = 0; //최대 카메라 각도
+    private float currentCameraRotation; //현재 카메라 각도
+
+
+
+    private void Start()
+    {
+        camera = FindObjectOfType<Camera>();   
+    }
     private void Update()
     {
         CameraRotate();
-    }
-    private void LateUpdate()
-    {
         Follow();
     }
     void CameraRotate()
@@ -21,11 +31,12 @@ public class CameraMove : MonoBehaviour
         //마우스 입력받기
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
+        //  `float cameraRotate = mouseY * lookSensitivity;  
         //회전 방향/각도 결정
         mouseX += Time.deltaTime * 10;
-        mouseY += Time.deltaTime * 10;
+        mouseY += Time.deltaTime * 10; //0.016
         //my = Mathf.Clamp(my, -rotatelimit, rotatelimit);
-
+            
         // 쿼터니언 오일러 사용 방법  
         transform.rotation = Quaternion.Euler(mouseX, mouseY, 0.0f);
         //z값 고정 Quaternion xyz w
@@ -39,5 +50,6 @@ public class CameraMove : MonoBehaviour
     void Follow()
     {
         transform.position = new Vector3(target.position.x, target.position.y, target.position.z);
+        return;
     }
 }

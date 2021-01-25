@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    [SerializeField]
     public float playerSpeed = 1.5f;
     float x;
     float z;
     private Vector3 moving;
-    Rigidbody rigid;
 
+    Rigidbody rigid;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
@@ -24,8 +25,8 @@ public class PlayerController : MonoBehaviour
     }
     void Move()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        x = Input.GetAxisRaw("Horizontal"); //0,1
+        z = Input.GetAxisRaw("Vertical");
         moving = new Vector3(x, 0, z).normalized;//normalized는 벡터값을 1로 평준화해준다
         transform.position += moving * playerSpeed * Time.deltaTime;
         transform.LookAt(transform.position,moving);
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
         //마우스 입력받기
         float mouseX = Input.GetAxis("Mouse X");
         //회전 방향 결정
-        Vector3 dir = new Vector3(0, -mouseX, 0);
+        Vector3 dir = new Vector3(0, mouseX, 0);//캐릭터 방향
 
         //r=ro+vt
         transform.eulerAngles += dir * rotateSpeed * Time.deltaTime;
