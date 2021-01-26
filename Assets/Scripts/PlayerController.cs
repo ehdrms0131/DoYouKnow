@@ -11,16 +11,16 @@ public class PlayerController : MonoBehaviour
     float z;
     private Vector3 moving;
 
-    Rigidbody rigid;
+    Rigidbody playerRigid;
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody>();
+        playerRigid = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         Move();
-        Rotate();
+        CameraRotate();
         Jump();
     }
     void Move()
@@ -37,9 +37,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))//스페이스바
         {
-            rigid.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
+            playerRigid.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
             return;
-             
         }
     }
     void Rotate()
@@ -52,6 +51,16 @@ public class PlayerController : MonoBehaviour
 
         //r=ro+vt
         transform.eulerAngles += dir * rotateSpeed * Time.deltaTime;
+        return;
+    }
+    void CameraRotate()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+
+        //float cameraRotate = mouseX * lookSensitivity;
+        Vector3 rotation = new Vector3(0f, mouseX, 0f) * 1;
+
+        playerRigid.MoveRotation(playerRigid.rotation * Quaternion.Euler(rotation));
         return;
     }
 }
