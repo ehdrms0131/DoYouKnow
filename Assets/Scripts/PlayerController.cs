@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             rigid.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
             return;
+             
         }
     }
     void Rotate()

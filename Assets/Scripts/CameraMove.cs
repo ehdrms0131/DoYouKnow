@@ -11,7 +11,7 @@ public class CameraMove : MonoBehaviour
 
     [SerializeField]
     private float lookSensitivity = 1;
-    private float cameraRotatelimit = 45; //최대 카메라 각도
+    private float cameraRotatelimit = 40; //최대 카메라 각도
     private float currentCameraRotation = 0; //현재 카메라 각도
 
 
@@ -21,8 +21,11 @@ public class CameraMove : MonoBehaviour
     }
     private void Update()
     {
-        CameraRotate();
         Follow();
+    }
+    private void LateUpdate()
+    {
+        CameraRotate();
     }
     void CameraRotate()
     {
@@ -38,18 +41,40 @@ public class CameraMove : MonoBehaviour
         //mouseX += Time.deltaTime * 10;
         //mouseY += Time.deltaTime * 10; //0.016
 
-        currentCameraRotation -= cameraRotate;
-        currentCameraRotation = Mathf.Clamp(currentCameraRotation, -cameraRotatelimit, cameraRotatelimit); 
+        
 
+        currentCameraRotation -= cameraRotate;
+        currentCameraRotation = Mathf.Clamp(currentCameraRotation, -cameraRotatelimit, cameraRotatelimit);
 
         // 쿼터니언 오일러 사용 방법  
-        camera.transform.rotation = Quaternion.Euler(currentCameraRotation, 0f, 0f);
+
+        camera.transform.rotation = Quaternion.Euler(currentCameraRotation, 0f, 0f);//y축이동
+
         //z값 고정 Quaternion xyz w
         //euler값을 쓰는 이유: Gimbal Lock (z축의 변환,고정)
 
         //r=ro+vt
 
         //rotate.x = Mathf.Clamp(rotate.x, -90.0f, 90.0f);//각도를 제한
+
+        /*
+        // Compute the position the object will reach
+        // 개체가 도달하는 위치를 계산합니다.
+        Vector3 desiredPosition = Target.rotation * (Target.position + Offset);
+
+        // Compute the direction the object will look at
+        // 객체가 볼 방향을 계산합니다.
+        Vector3 desiredDirection = Vector3.Project( Target.forward, (Target.position - desiredPosition).normalized );
+
+        // Rotate the object
+        // 객체 회전
+        transform.rotation = Quaternion.Slerp( transform.rotation, Quaternion.LookRotation( desiredDirection ), Time.deltaTime * Speed );
+
+
+        // Place the object to "compensate" the rotation
+        // 회전 "보정"을 위해 객체를 배치합니다.
+        transform.position = Target.position - transform.forward * Offset.magnitude;
+        */
         return;
     }
     void Follow()
@@ -57,4 +82,5 @@ public class CameraMove : MonoBehaviour
         transform.position = new Vector3(target.position.x, target.position.y, target.position.z);
         return;
     }
+
 }
