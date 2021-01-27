@@ -5,4 +5,5 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     protected string[] weapon = { "Hand", "Card", "Stick" };
+    //int Dmg = 10;
 }

@@ -13,7 +13,6 @@ public class CameraMove : MonoBehaviour
     private float XlookSensitivity = 1.95f;     //1.3~2.3 (감도)
     private float XcameraRotatelimit = 70f;     //최대 카메라 각도
     private float XcurrentCameraRotation = 0f;  //현재 카메라 각도
-
     private float YlookSensitivity = 1f;        //0.75~1.25;
     private float YcameraRotatelimit = 80f;     //최대 카메라 각도
     private float YcurrentCameraRotation = 0f;  //현재 카메라 각도

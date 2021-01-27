@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    bool fire;
+
     [SerializeField]
     public float playerSpeed = 1.5f;
     float x;
@@ -13,12 +15,15 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody playerRigid;
     Animator animator;
+    //Weapon weapon;
 
+    bool isFire;
 
     [SerializeField]
     private float lookSensitivity = 1.95f;     //1.3~2.3 (감도)
     private float Rotatelimit = 70f;     //최대 카메라 각도
     private float Rotation = 0f;  //현재 카메라 각도
+    private float fireDelay = 0f;
     private void Awake()
     {
         playerRigid = GetComponent<Rigidbody>();
@@ -69,15 +74,15 @@ public class PlayerController : MonoBehaviour
         
         return;
     }
-    void CameraRotate()
-    {
-        float mouseX = Input.GetAxis("Mouse X");
+    //void CameraRotate()
+    //{
+    //    float mouseX = Input.GetAxis("Mouse X");
 
-        //float cameraRotate = mouseX * lookSensitivity;
-        Vector3 rotation = new Vector3(0f, mouseX, 0f) * 1;
+    //    //float cameraRotate = mouseX * lookSensitivity;
+    //    Vector3 rotation = new Vector3(0f, mouseX, 0f) * 1;
 
-        playerRigid.MoveRotation(playerRigid.rotation * Quaternion.Euler(rotation));
+    //    playerRigid.MoveRotation(playerRigid.rotation * Quaternion.Euler(rotation));
 
-        return;
-    }
+    //    return;
+    //}
 }

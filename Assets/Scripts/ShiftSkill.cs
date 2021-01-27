@@ -10,7 +10,9 @@ public class ShiftSkill : SkillManager
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (1<2)//플레이어의 무기가 card일 경우
+                if (1<2
+                    //weapon=card
+                    )//플레이어의 무기가 card일 경우
                 {
                     //통나무 생성
                     //한번 더 누르면 통나무와 위치 교체
