@@ -13,10 +13,11 @@ public class PlayerController : MonoBehaviour
     float z;
     private Vector3 moving;
 
+
     Rigidbody playerRigid;
     Animator animator;
-    //Weapon weapon;
-
+    //Weapon weapons;
+    // GameObject[] Player.weapons
     bool isFire;
 
     [SerializeField]
