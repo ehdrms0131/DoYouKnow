@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private float lookSensitivity = 1.95f;     //1.3~2.3 (감도)
     private float Rotatelimit = 70f;     //최대 카메라 각도
     private float Rotation = 0f;  //현재 카메라 각도
-    private float fireDelay = 0f;
+    //private float fireDelay = 0f;
     private void Awake()
     {
         playerRigid = GetComponent<Rigidbody>();
