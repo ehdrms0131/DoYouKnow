@@ -37,9 +37,9 @@ public class PlayerController : MonoBehaviour
         z = Input.GetAxisRaw("Vertical");
         moving = new Vector3(x, 0, z).normalized;//normalized는 벡터값을 1로 평준화해준다
         transform.position += moving * playerSpeed * Time.deltaTime;
-        transform.LookAt(transform.position, moving);
-        animator.SetBool("isWalk", moving != Vector3.zero);
-        return;
+        //transform.LookAt(transform.position, moving);
+
+        animator.SetBool("IsWalk", moving != Vector3.zero);
     }
 
     void Jump()
