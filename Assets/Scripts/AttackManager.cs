@@ -27,14 +27,14 @@ public class AttackManager : MonoBehaviour//PlayerController
     }
     void Swap()
     {
-        int weaponIndex = -1;
+        int weaponIndex = 0;
         if (b2)
         {
-            weaponIndex = 0;
+            weaponIndex = 1;
         }
         if (b3)
         {
-            weaponIndex = 1;
+            weaponIndex = 2;
         }
 
         //change = Input.GetAxis("Fire 2");//정신집중
@@ -51,6 +51,13 @@ public class AttackManager : MonoBehaviour//PlayerController
         }
         b2 = Input.GetButtonDown("Fire1");
         b3 = Input.GetButtonDown("Fire2");
+
+        if (b1 || b2 || b3)
+        {
+            //weapons[weaponIndex].SetActive(false);
+
+            weapons[weaponIndex].SetActive(true);
+        }
 
         if (b1 || b2 || b3)
         {
