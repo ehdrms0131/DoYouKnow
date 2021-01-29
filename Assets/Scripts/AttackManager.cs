@@ -10,13 +10,11 @@ public class AttackManager : MonoBehaviour//PlayerController
     bool b2;
     bool b3;
 
-    float a1;
-    float a2;
-
     public GameObject[] weapons;
+    public GameObject equip;
     public bool[] hasWeapons;
+
     public enum Type { Card, Stick };
-    public bool hasWeapon;
     public Type type;
     public int damage;
     public float rate;
@@ -54,16 +52,9 @@ public class AttackManager : MonoBehaviour//PlayerController
 
         if (b1 || b2 || b3)
         {
-            //weapons[weaponIndex].SetActive(false);
-
-            weapons[weaponIndex].SetActive(true);
-        }
-
-        if (b1 || b2 || b3)
-        {
-            //weapons[weaponIndex].SetActive(false);
-
-            weapons[weaponIndex].SetActive(true);
+            equip = weapons[weaponIndex];
+            equip.SetActive(false);
+            equip.SetActive(true);
         }
     }
 }

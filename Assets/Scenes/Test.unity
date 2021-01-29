@@ -1139,10 +1139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  hasWeapons: 000000
+  - {fileID: 1959136217}
+  - {fileID: 1934066592}
+  hasWeapons: 0000
   hasWeapon: 0
   type: 0
   damage: 0
@@ -3256,6 +3255,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5e135a19626f544908fc8f156144b9, type: 3}
+--- !u!1 &1934066592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6809464654616744850, guid: f5720d4c8a9ce1c41ac0c40401750a90,
+    type: 3}
+  m_PrefabInstance: {fileID: 6809464653115851514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1959136217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2290651271076660013, guid: 025ad7b1302da824f970741521bc0cb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2290651270050398922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2090849727
 PrefabInstance:
   m_ObjectHideFlags: 0
