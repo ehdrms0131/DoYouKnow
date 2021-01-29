@@ -34,10 +34,11 @@ public class AttackManager : MonoBehaviour//PlayerController
         {
             weaponIndex = 2;
         }
+        if(hasWeapons[0])
+        {
+             
+        }
 
-        //change = Input.GetAxis("Fire 2");//정신집중
-
-        /*b1 = Input.GetButtonDown("Mouse 2");*/
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -49,11 +50,13 @@ public class AttackManager : MonoBehaviour//PlayerController
         }
         b2 = Input.GetButtonDown("Fire1");
         b3 = Input.GetButtonDown("Fire2");
-
         if (b1 || b2 || b3)
         {
+            if (equip != null)
+            {
+                equip.SetActive(false);
+            }
             equip = weapons[weaponIndex];
-            equip.SetActive(false);
             equip.SetActive(true);
         }
     }
