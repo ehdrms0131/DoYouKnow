@@ -4,9 +4,9 @@
 
 public class AttackManager : MonoBehaviour//PlayerController
 {
+
     //float change;
 
-    bool b1;
     bool b2;
     bool b3;
 
@@ -34,12 +34,6 @@ public class AttackManager : MonoBehaviour//PlayerController
         {
             weaponIndex = 2;
         }
-        if(hasWeapons[0])
-        {
-             
-        }
-
-
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("b2 입력됨");
@@ -50,7 +44,7 @@ public class AttackManager : MonoBehaviour//PlayerController
         }
         b2 = Input.GetButtonDown("Fire1");
         b3 = Input.GetButtonDown("Fire2");
-        if (b1 || b2 || b3)
+        if (b2 || b3)
         {
             if (equip != null)
             {
