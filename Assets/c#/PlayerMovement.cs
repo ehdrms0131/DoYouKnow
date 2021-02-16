@@ -35,7 +35,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMove();
+        if (PlayerSkills.Instance.isCloud())
+            PlayerMove();
+        else
+            CloudMove();
+
     }
 
     void PlayerMove()
@@ -104,6 +108,30 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             anim.SetBool("IsAttackRod", false);
+    }
+
+    void CloudMove()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            anim.SetBool("IsRunning", true);
+            Dash(5.0f);
+        }
+        else
+            anim.SetBool("IsRunning", false);
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * _moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.back * _moveSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * _moveSpeed * Time.deltaTime);
+        }
     }
 
     void Jump()

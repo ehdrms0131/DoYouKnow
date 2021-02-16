@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
+
+    private static PlayerSkills instance = null;
+
     [SerializeField]
     float C_Attack_Damage;
     float Skill_E_Damage;
@@ -11,57 +14,109 @@ public class PlayerSkills : MonoBehaviour
     Rigidbody player;
     Animator anim;
     bool cloud_check = true;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         player = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        if (null == instance)
+        {
+            //이 클래스 인스턴스가 탄생했을 때 전역변수 instance에 게임매니저 인스턴스가 담겨있지 않다면, 자신을 넣어준다.
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        { 
+            Destroy(this.gameObject);
+        }
+    }
+    // Start is called before the first frame update
+    //void Start()
+    //{
+        
+    //}
+
+    //싱글톤 사용
+    public static PlayerSkills Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+            return instance;
+        }
     }
 
     // Update is called once per frame
     [System.Obsolete]
     void Update()
     {
-        if(Input.GetKey(KeyCode.Mouse0))
+        Player_Cloud();
+        if (isCloud() == false)
+            Player_C_Attack();
+   
+    }
+
+    void Player_C_Attack()
+    {
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            
+
             anim.SetBool("isAttackRod_classic", true);
             Debug.Log("마우스 좌클릭");
 
         }
         else
             anim.SetBool("isAttackRod_classic", false);
-        if (Input.GetKey(KeyCode.LeftShift))
+    }    
+
+    [System.Obsolete]
+    void Player_Cloud()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Debug.Log("왼쪽 shift");
             GameObject tempobj = null;
 
             tempobj = GameObject.Find("Ch24_nonPBR").transform.FindChild("G_cloud").gameObject;
 
-            if(tempobj != null && cloud_check == true)
+            if (tempobj != null && cloud_check == false)
             {
-                
+
                 Debug.Log("성공적으로 " + tempobj.name + "오브젝트를 받았습니다.");
                 tempobj.SetActive(true);
-                cloud_check = false;
-                
+                cloud_check = true;
+
             }
-            else if(tempobj != null && cloud_check == false)
+            else if (tempobj != null && cloud_check == true)
             {
                 Debug.Log("근두운 해제");
                 tempobj.SetActive(false);
-                cloud_check = true;
+                cloud_check = false;
             }
             else
             {
                 Debug.LogError("실패");
             }
         }
-            
     }
 
     public void setC_Damage(float damage)
     {
         this.C_Attack_Damage = damage; 
+    }
+
+    public float Get_C_Damage()
+    {
+        return C_Attack_Damage;
+    }
+
+    public bool isCloud()
+    {
+        return cloud_check;
     }
 }
