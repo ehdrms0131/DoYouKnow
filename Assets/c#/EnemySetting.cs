@@ -54,17 +54,19 @@ public class EnemySetting : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision other)
-    //{
+    private void OnCollisionEnter(Collision other)
+    {
+        
+    }
 
-    //}
-
-    private void OnTriggerEnter(Collider other)
+private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Rod"))
         {
-            
-            Debug.Log("악");
+            Debug.Log("케복");
+            if (PlayerSkills.Instance.Get_C_Damage() > 0)
+                Debug.Log("악");
+
             E_healthLive -= PlayerSkills.Instance.Get_C_Damage();
         }
     }

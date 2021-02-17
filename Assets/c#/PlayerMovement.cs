@@ -36,13 +36,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (PlayerSkills.Instance.isCloud())
-            PlayerMove();
-        else
+        {
+            SetMoveSpeed(20f);
             CloudMove();
-
+            
+        }
+        else
+        {
+            SetMoveSpeed(10f);
+            PlayerMove();
+        }
     }
 
-    void PlayerMove()
+    void CloudMove()
     {
 
         //키보드 w w 대쉬
@@ -110,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsAttackRod", false);
     }
 
-    void CloudMove()
+    void PlayerMove()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -145,5 +151,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Ground_Check = true;
         }
+    }
+
+    float GetMoveSpeed()
+    {
+        return _moveSpeed;
+    }
+
+    void SetMoveSpeed(float speed)
+    {
+        this._moveSpeed = speed;
     }
 }

@@ -8,7 +8,7 @@ public class PlayerSkills : MonoBehaviour
     private static PlayerSkills instance = null;
 
     [SerializeField]
-    float C_Attack_Damage;
+    float C_Attack_Damage = 0f;
     float Skill_E_Damage;
 
     Rigidbody player;
@@ -60,14 +60,21 @@ public class PlayerSkills : MonoBehaviour
    
     }
 
+    IEnumerator AttackDelay()
+    {
+        yield return new WaitForSeconds(1);
+    }    
+
     void Player_C_Attack()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            setC_Damage(20f);
             anim.SetBool("isAttackRod_classic", true);
             Debug.Log("마우스 좌클릭");
-
+            AttackDelay();
+            //setC_Damage(0f);
+            Debug.Log("A케2복");
         }
         else
             anim.SetBool("isAttackRod_classic", false);
