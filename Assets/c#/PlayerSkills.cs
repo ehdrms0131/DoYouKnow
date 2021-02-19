@@ -10,6 +10,10 @@ public class PlayerSkills : MonoBehaviour
     [SerializeField]
     float C_Attack_Damage = 0f;
     float Skill_E_Damage;
+    
+    float delayTime = 2.0f;
+
+    bool CanAttack;
 
     Rigidbody player;
     Animator anim;
@@ -72,8 +76,8 @@ public class PlayerSkills : MonoBehaviour
             setC_Damage(20f);
             anim.SetBool("isAttackRod_classic", true);
             Debug.Log("마우스 좌클릭");
-            AttackDelay();
-            //setC_Damage(0f);
+
+            StartCoroutine(CountAttackDelay());
             Debug.Log("A케2복");
         }
         else
@@ -125,5 +129,10 @@ public class PlayerSkills : MonoBehaviour
     public bool isCloud()
     {
         return cloud_check;
+    }
+
+    IEnumerator CountAttackDelay()
+    {
+        yield return new WaitForSeconds(delayTime);
     }
 }

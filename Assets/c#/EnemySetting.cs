@@ -54,10 +54,10 @@ public class EnemySetting : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
+    //private void OnCollisionEnter(Collision other)
+    //{
         
-    }
+    //}
 
 private void OnTriggerEnter(Collider other)
     {
