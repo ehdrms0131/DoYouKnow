@@ -63,9 +63,9 @@ private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Rod"))
         {
-            Debug.Log("케복");
+            Debug.Log("봉만영");
             if (PlayerSkills.Instance.Get_C_Damage() > 0)
-                Debug.Log("악");
+                Debug.Log("봉한테 맞아죽음");
 
             E_healthLive -= PlayerSkills.Instance.Get_C_Damage();
         }
