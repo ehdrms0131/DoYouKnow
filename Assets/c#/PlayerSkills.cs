@@ -116,6 +116,8 @@ public class PlayerSkills : MonoBehaviour
         }
     }
 
+
+
     public void setC_Damage(float damage)
     {
         this.C_Attack_Damage = damage; 
