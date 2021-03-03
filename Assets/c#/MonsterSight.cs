@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class MonsterSight : MonoBehaviour
 {
+
+    public Transform target;
     [SerializeField] float m_angle = 0f;
     [SerializeField] float m_distance = 0f;
     [SerializeField] LayerMask m_layerMask = 0;
-
-    public Transform target;
 
     Animator anim;
     NavMeshAgent nav;
