@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-
+    
     private static PlayerSkills instance = null;
 
     [SerializeField]
@@ -60,8 +60,10 @@ public class PlayerSkills : MonoBehaviour
     {
         Player_Cloud();
         if (isCloud() == false)
+        {
             Player_C_Attack();
-   
+            Magic_skill();
+        }
     }
 
     IEnumerator AttackDelay()
@@ -131,6 +133,26 @@ public class PlayerSkills : MonoBehaviour
     public bool isCloud()
     {
         return cloud_check;
+    }
+
+    [System.Obsolete]
+    private void Magic_skill()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Q입력");
+            GameObject magic_obj = null;
+
+            magic_obj = GameObject.Find("Ch24_nonPBR").transform.FindChild("Magic_ball").gameObject;
+
+            if (magic_obj != null)
+            {
+
+                Debug.Log("성공적으로 " + magic_obj.name + "오브젝트를 받았습니다.");
+                magic_obj.SetActive(true);
+                Instantiate(magic_obj);
+            }
+        }
     }
 
     IEnumerator CountAttackDelay()
