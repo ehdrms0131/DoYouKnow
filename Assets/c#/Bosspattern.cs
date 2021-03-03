@@ -13,7 +13,7 @@ public class Bosspattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bolt = GetComponent<Object>();
+        
     }
 
     // Update is called once per frame
