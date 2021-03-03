@@ -795,8 +795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb8de4e49c397947b43cc3e7a4eb08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_angle: 0
-  m_distance: 0
+  m_angle: 45
+  m_distance: 50
   m_layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -1511,9 +1511,10 @@ GameObject:
   - component: {fileID: 230538822}
   - component: {fileID: 230538821}
   - component: {fileID: 230538820}
+  - component: {fileID: 230538824}
   m_Layer: 0
   m_Name: Magic_ball
-  m_TagString: Untagged
+  m_TagString: MagicA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1593,6 +1594,19 @@ Transform:
   m_Father: {fileID: 478173082}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &230538824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230538819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7b6d8b45ddcb24d9fcf6f681aa2444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magic: {fileID: 230538819}
 --- !u!1001 &289329566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3755,13 +3769,14 @@ GameObject:
   - component: {fileID: 590692440}
   - component: {fileID: 590692439}
   - component: {fileID: 590692438}
+  - component: {fileID: 590692441}
   m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &590692437
 Transform:
   m_ObjectHideFlags: 0
@@ -3837,6 +3852,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590692436}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &590692441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590692436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0216ed9956ca45543bedc259cf88c891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetTr: {fileID: 478173082}
+  Tr: {fileID: 590692437}
 --- !u!1 &621497257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 180470, guid: dd7b214f231a42845a11a0745242ec75,
@@ -3859,7 +3888,7 @@ MonoBehaviour:
   E_attack: 50
   sinkSpeed: 2.5
   scoreValue: 10
-  E_healthMax: 100
+  E_healthMax: 500
   E_healthLive: 0
   deathClip: {fileID: 0}
 --- !u!114 &621497259
@@ -3874,12 +3903,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!4 &621497264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480470, guid: dd7b214f231a42845a11a0745242ec75,
@@ -4776,12 +4805,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!195 &717141122
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4860,12 +4889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!195 &783383501
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4941,12 +4970,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!114 &786431596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5678,12 +5707,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!195 &897514202
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5935,12 +5964,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!195 &964449378
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6056,12 +6085,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0086e61abf7894f8429443a600da52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 478173082}
   m_angle: 90
   m_distance: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 256
-  target: {fileID: 478173082}
 --- !u!195 &1428761460
 NavMeshAgent:
   m_ObjectHideFlags: 0

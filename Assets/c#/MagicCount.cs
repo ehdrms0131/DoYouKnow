@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MagicCount : MonoBehaviour
 {
-    GameObject magic;
+    [SerializeField]
+    GameObject magic; 
+
     // Start is called before the first frame update
     void Start()
     {
-        magic = GetComponent<GameObject>();
+        
     }
     
     // Update is called once per frame
@@ -24,6 +26,8 @@ public class MagicCount : MonoBehaviour
 
     private void Die()
     {
-        Destroy(magic, 0.2f);
+
+        Destroy(magic, 2);
+        PlayerSkills.Instance.MagicA_check = true;
     }
 }

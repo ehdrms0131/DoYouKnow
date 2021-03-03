@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-    
+
     private static PlayerSkills instance = null;
 
     [SerializeField]
     float C_Attack_Damage = 0f;
     float Skill_E_Damage;
-    
+    float Skill_Magic_Damage = 30f;
+
+
     float delayTime = 2.0f;
 
     bool CanAttack;
 
     Rigidbody player;
     Animator anim;
+
     bool cloud_check = true;
+    static bool _magicA_check = true;
 
     private void Awake()
     {
@@ -31,14 +35,14 @@ public class PlayerSkills : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         else
-        { 
+        {
             Destroy(this.gameObject);
         }
     }
     // Start is called before the first frame update
     //void Start()
     //{
-        
+
     //}
 
     //싱글톤 사용
@@ -69,7 +73,7 @@ public class PlayerSkills : MonoBehaviour
     IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(1);
-    }    
+    }
 
     void Player_C_Attack()
     {
@@ -84,12 +88,12 @@ public class PlayerSkills : MonoBehaviour
         }
         else
             anim.SetBool("isAttackRod_classic", false);
-    }    
+    }
 
     [System.Obsolete]
     void Player_Cloud()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Debug.Log("왼쪽 shift");
@@ -122,12 +126,17 @@ public class PlayerSkills : MonoBehaviour
 
     public void setC_Damage(float damage)
     {
-        this.C_Attack_Damage = damage; 
+        this.C_Attack_Damage = damage;
     }
 
     public float Get_C_Damage()
     {
         return C_Attack_Damage;
+    }
+
+    public float Get_Skill_A_Damage()
+    {
+        return Skill_Magic_Damage;
     }
 
     public bool isCloud()
@@ -145,13 +154,28 @@ public class PlayerSkills : MonoBehaviour
 
             magic_obj = GameObject.Find("Ch24_nonPBR").transform.FindChild("Magic_ball").gameObject;
 
-            if (magic_obj != null)
+            if (magic_obj != null && MagicA_check)
             {
 
                 Debug.Log("성공적으로 " + magic_obj.name + "오브젝트를 받았습니다.");
                 magic_obj.SetActive(true);
                 Instantiate(magic_obj);
             }
+            else
+            {
+                Debug.LogError("마법 A 실패");
+            }
+        }
+    }
+
+    public bool MagicA_check{
+        get
+        {
+            return _magicA_check;
+        }
+        set 
+        {
+            _magicA_check = value;
         }
     }
 

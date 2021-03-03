@@ -15,7 +15,7 @@ public class EnemySetting : MonoBehaviour
     public int scoreValue = 10;
 
     //최대 체력
-    public float E_healthMax = 100f;
+    public float E_healthMax = 500f;
 
     //현재 체력
     public float E_healthLive;
@@ -52,6 +52,8 @@ public class EnemySetting : MonoBehaviour
         {
             transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
         }
+        if (E_healthLive < 0)
+            Debug.Log("봉한테 맞아죽음");
     }
 
     //private void OnCollisionEnter(Collision other)
@@ -64,10 +66,14 @@ private void OnTriggerEnter(Collider other)
         if (other.gameObject.CompareTag("Rod"))
         {
             Debug.Log("봉만영");
-            if (PlayerSkills.Instance.Get_C_Damage() > 0)
-                Debug.Log("봉한테 맞아죽음");
+            
 
             E_healthLive -= PlayerSkills.Instance.Get_C_Damage();
+        }
+        if(other.gameObject.CompareTag("MagicA"))
+        {
+            Debug.Log("마법으로 맞아쪄..");
+            E_healthLive -= PlayerSkills.Instance.Get_Skill_A_Damage()
         }
     }
 }
