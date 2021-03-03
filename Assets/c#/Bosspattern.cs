@@ -13,7 +13,7 @@ public class Bosspattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bolt = GetComponent<Object>();
+        //bolt = GetComponent<Object>();
     }
 
     // Update is called once per frame
@@ -38,7 +38,6 @@ public class Bosspattern : MonoBehaviour
                 if(Physics.Raycast(transform.position, t_direction, out RaycastHit t_hit, m_distance))
                 {
                     Debug.Log("볼트 레이케스트");
-                    transform.position = Vector3.Lerp(transform.position, t_hit.transform.position, 2f);
                 }
             }
 

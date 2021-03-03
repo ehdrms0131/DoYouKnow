@@ -145,14 +145,14 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.up * 3;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Ground_Check = true;
-        }
-    }
-
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        Ground_Check = true;
+    //    }
+    //}
+                 
     float GetMoveSpeed()
     {
         return _moveSpeed;
