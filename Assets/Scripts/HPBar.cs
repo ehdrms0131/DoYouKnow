@@ -41,7 +41,6 @@ public class HPBar : MonoBehaviour
     {
         
     }
-    
     void Lost()
     {
         //slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });

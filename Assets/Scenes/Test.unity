@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 619985315}
   - component: {fileID: 619985316}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -584,6 +584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 1832060896}
+  cam: {fileID: 963194227}
+  slider: {fileID: 619985315}
 --- !u!4 &637991216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2290651271076660002, guid: 025ad7b1302da824f970741521bc0cb5,
